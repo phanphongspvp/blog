@@ -9,7 +9,7 @@ function AuthContextProvider({children}) {
     const [userEmail, setUserEmail] = useState("");
 
     useEffect(() => {
-        axios.get("/profile").then(userToken => {
+        axios.get("/profile").then(userToken => {                        
             setUserId(userToken.data.userId);
             setUserEmail(userToken.data.email);
         })

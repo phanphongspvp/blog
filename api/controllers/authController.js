@@ -18,12 +18,12 @@ class AuthController {
       }
 
       jwt.sign(
-        { userId: userDataEmail, email },
+        { userId: userDataEmail._id, email },
         secretJwt,
         {},
         (err, token) => {
           if (err) throw err;
-          res.cookie("token", token).json({ userId: userDataEmail, email });
+          res.cookie("token", token).json({ userId: userDataEmail._id, email });
         }
       );
     } catch (err) {

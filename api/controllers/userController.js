@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/userModel");
 
 class UserController {
   home(req, res) {
@@ -13,6 +14,28 @@ class UserController {
     } else {
       res.json("no-token");
     }
+  }
+
+  async userById(req, res) {
+    const id = req.params.id;
+
+    const userDoc = await User.findOne({ _id: id });
+    res.json(userDoc);
+  }
+
+  async editUser(req, res) {
+    const { id, avatar, description, birth } = req.body;
+
+    const userDoc = await User.updateOne(
+      { _id: id },
+      {
+        avatar,
+        describeYourself: description,
+        dateOfBirth: birth,
+      }
+    );
+
+    res.json(userDoc);
   }
 }
 

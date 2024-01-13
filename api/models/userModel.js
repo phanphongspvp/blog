@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 const userModel = new Schema(
   {
     email: { type: String, required: true, unique: true },
-    password: String,
+    password: { type: String, default: "" },
+    avatar: { type: String, default: "" },
+    describeYourself: { type: String, default: "" },
+    dateOfBirth: { type: Date, default: null },
   },
   {
     timestamps: true,
